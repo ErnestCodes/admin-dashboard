@@ -70,7 +70,7 @@ export const columns: ColumnDef<CLassData>[] = [
   },
 ];
 
-const page = () => {
+const HomePage = () => {
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
@@ -184,4 +184,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default HomePage;
