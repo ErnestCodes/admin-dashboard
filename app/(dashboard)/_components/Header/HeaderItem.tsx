@@ -35,7 +35,7 @@ const HeaderItem = ({ Icon, label, href }: Props) => {
         >
           <Icon
             size={20}
-            className={cn('text-[#000]', isActive && 'text-white')}
+            className={cn('text-[#ff4d88]', isActive && 'text-white')}
           />
         </div>
         <span className='font-inter text-white font-normal text-lg'>

@@ -7,19 +7,19 @@ const statData = [
     id: 1,
     Icon: Users,
     label: 'Total Users',
-    input: '1,500',
+    input: '9,500',
   },
   {
     id: 2,
     Icon: ShieldCheck,
     label: 'Completed Verifications',
-    input: '500',
+    input: '9,300',
   },
   {
     id: 3,
     Icon: ShieldAlert,
     label: 'Pending Verifications',
-    input: '2,500',
+    input: '200',
   },
   {
     id: 4,
