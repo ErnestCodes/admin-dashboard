@@ -33,7 +33,7 @@ import {
 } from '@/components/ui/table';
 import Stats from '../_components/Stats/Stats';
 
-export const columns: ColumnDef<CLassData>[] = [
+const columns: ColumnDef<CLassData>[] = [
   {
     accessorKey: 'id',
     header: 'S/N',
