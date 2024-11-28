@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { UserRound } from 'lucide-react';
+import { UserButton } from '@clerk/nextjs';
 
 const Navbar = async () => {
   return (
@@ -18,7 +18,7 @@ const Navbar = async () => {
 
       <div className='flex'>
         <div className='h-8 w-8 flex-center bg-[#a3a3a3] rounded-full'>
-          <UserRound color='#fff' size={18} />
+          <UserButton />
         </div>
       </div>
     </nav>

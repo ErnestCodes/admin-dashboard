@@ -4,7 +4,7 @@ import { LucideIcon } from 'lucide-react';
 
 type Props = {
   label: string;
-  input: string;
+  input: any;
   Icon: LucideIcon;
 };
 

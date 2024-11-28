@@ -25,8 +25,8 @@ export interface Verification {
 
 export type ProviderProps = {
   userId: string;
-  fetchUsers: () => void;
-  fetchVerifications: () => void;
+  fetchUsers: () => Promise<any>;
+  fetchVerifications: () => Promise<any>;
   updateVerifications: (
     user_id: string,
     status: 'PENDING' | 'ACCEPTED' | 'REJECTED'

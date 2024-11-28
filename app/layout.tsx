@@ -4,6 +4,7 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import { ToastProvider } from '@/providers/toast-providers';
 import { SupabaseProvider } from '@/contexts/SupabaseContext';
+import ReactQueryProvider from '@/providers/react-query-providers';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -20,12 +21,14 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <SupabaseProvider>
-        <html lang='en'>
-          <body className={inter.className}>
-            <ToastProvider />
-            {children}
-          </body>
-        </html>
+        <ReactQueryProvider>
+          <html lang='en'>
+            <body className={inter.className}>
+              <ToastProvider />
+              {children}
+            </body>
+          </html>
+        </ReactQueryProvider>
       </SupabaseProvider>
     </ClerkProvider>
   );
