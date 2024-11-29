@@ -1,10 +1,9 @@
 'use client';
 
 import { client } from '@/lib/supabaseClient';
-import { ProviderProps, User } from '@/types/enums';
-import { useAuth } from '@clerk/nextjs';
+import { ProviderProps } from '@/types/enums';
+import { ClerkLoaded, useSession } from '@clerk/nextjs';
 import { createContext, useContext, useEffect } from 'react';
-import toast from 'react-hot-toast';
 
 export const VERIFICATIONS_TABLE = 'verifications';
 export const PROFILES_TABLE = 'profiles';
@@ -17,18 +16,27 @@ export function useSupabase() {
 }
 
 export const SupabaseProvider = ({ children }: any) => {
-  const { userId } = useAuth();
+  const { session } = useSession();
 
   useEffect(() => {
-    setRealtimeAuth();
-  }, []);
+    if (session) {
+      setRealtimeAuth();
+    }
+  }, [session]);
 
   const setRealtimeAuth = async () => {
-    const clerkToken = await window.Clerk?.session?.getToken({
-      template: 'supabase',
-    });
+    try {
+      const clerkToken = await session?.getToken({ template: 'supabase' });
 
-    client.realtime.setAuth(clerkToken!);
+      if (!clerkToken) {
+        console.warn('Clerk token is undefined. Retrying...');
+        return;
+      }
+
+      client.realtime.setAuth(clerkToken);
+    } catch (error) {
+      console.error('Error fetching Clerk token:', error);
+    }
   };
 
   async function fetchUsers() {
@@ -36,7 +44,6 @@ export const SupabaseProvider = ({ children }: any) => {
 
     if (error) {
       console.error(error.message);
-      toast.error('Something went wrong');
       return [];
     }
 
@@ -48,7 +55,6 @@ export const SupabaseProvider = ({ children }: any) => {
 
     if (error) {
       console.error(error.message);
-      toast.error('Something went wrong');
       return [];
     }
 
@@ -69,7 +75,6 @@ export const SupabaseProvider = ({ children }: any) => {
 
     if (error) {
       console.error(error.message);
-      toast.error('Something went wrong');
       return false;
     }
 
@@ -83,8 +88,10 @@ export const SupabaseProvider = ({ children }: any) => {
   };
 
   return (
-    <SupabaseContext.Provider value={value}>
-      {children}
-    </SupabaseContext.Provider>
+    <ClerkLoaded>
+      <SupabaseContext.Provider value={value}>
+        {children}
+      </SupabaseContext.Provider>
+    </ClerkLoaded>
   );
 };

@@ -14,7 +14,7 @@ const useGetVerifications = () => {
 
       return data;
     } catch (error: any) {
-      console.log(error);
+      console.log('verification eerror', error);
       return [] as any;
     }
   };
@@ -22,8 +22,6 @@ const useGetVerifications = () => {
   const { data, refetch, isLoading } = useQuery<Verification[]>({
     queryKey: ['verifications'],
     queryFn: async () => await handleFetch(),
-    staleTime: 0,
-    refetchOnWindowFocus: true,
   });
 
   return { isLoading, data, refetch };

@@ -22,8 +22,6 @@ const useGetUsers = () => {
   const { data, refetch, isLoading } = useQuery<User[]>({
     queryKey: ['users'],
     queryFn: async () => await handleFetch(),
-    staleTime: 0,
-    refetchOnWindowFocus: true,
   });
 
   return { isLoading, data, refetch };

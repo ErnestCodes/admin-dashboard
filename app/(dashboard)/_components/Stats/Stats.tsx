@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import StatsItem from './StatsItem';
 import { ShieldAlert, ShieldCheck, Users, Wallet } from 'lucide-react';
@@ -8,12 +9,12 @@ const Stats = () => {
   const { data: users } = useGetUsers();
   const { data: verifications } = useGetVerifications();
 
-  const completed =
-    verifications &&
-    verifications.filter((user) => user.status === 'ACCEPTED').length;
-  const pending =
-    verifications &&
-    verifications.filter((user) => user.status === 'PENDING').length;
+  const completed = verifications
+    ? verifications.filter((user) => user.status === 'ACCEPTED').length
+    : 0;
+  const pending = verifications
+    ? verifications.filter((user) => user.status === 'PENDING').length
+    : 0;
 
   const statData = [
     {

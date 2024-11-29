@@ -1,6 +1,6 @@
-import Navbar from "@/components/Navbar";
-import React from "react";
-import Header from "./_components/Header/Header";
+import Navbar from '@/components/Navbar';
+import React from 'react';
+import Header from './_components/Header/Header';
 
 type Props = {
   children: React.ReactNode;
@@ -8,10 +8,10 @@ type Props = {
 
 function DashboardLayout({ children }: Props) {
   return (
-    <div className="app">
+    <div className='app'>
       <Navbar />
       <Header />
-      <main className="w-full flex-center">{children}</main>
+      <main className='w-full flex-center'>{children}</main>
     </div>
   );
 }

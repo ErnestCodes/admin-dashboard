@@ -14,6 +14,7 @@ export interface User {
 }
 
 export interface Verification {
+  id: string;
   user_id: string;
   displayName: string;
   selfie_url: string;
