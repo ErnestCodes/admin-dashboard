@@ -31,5 +31,5 @@ export type ProviderProps = {
   updateVerifications: (
     user_id: string,
     status: 'PENDING' | 'ACCEPTED' | 'REJECTED'
-  ) => void;
+  ) => Promise<any>;
 };

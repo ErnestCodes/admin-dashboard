@@ -1,7 +1,6 @@
 'use client';
 
 import { ColumnDef } from '@tanstack/react-table';
-import moment from 'moment';
 import { ArrowUpDown, FileImage, Info, MoreVertical } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
@@ -146,7 +145,7 @@ export const columns: ColumnDef<Verification>[] = [
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align='end'>
-            <Link href={`/i/${id}`}>
+            <Link href={`/v/${id}`}>
               <DropdownMenuItem>
                 <Info className='h-4 w-4 mr-2' />
                 View more

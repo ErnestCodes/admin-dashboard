@@ -11,7 +11,7 @@ type Props = {
 const StatsItem = ({ label, input, Icon }: Props) => {
   return (
     <div
-      className='p-4 flex-row items-center flex rounded-xl gap-x-3 w-[288px] h-[100px] bg-white hover:mr-6 transition-all'
+      className='p-4 flex-row items-center flex rounded-xl gap-x-3 w-[288px] h-[100px] bg-white'
       style={{
         boxShadow: '1px 2px 18px #E5E5E5',
       }}
