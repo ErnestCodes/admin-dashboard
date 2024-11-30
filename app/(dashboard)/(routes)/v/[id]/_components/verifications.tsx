@@ -122,25 +122,31 @@ const Verifications = ({ userData }: Props) => {
       {/* more */}
       <div className='mt-5 flex items-center justify-around px-20'>
         <div className='relative h-48 w-48 md:h-96 md:w-96'>
-          <Image
-            src={userData?.selfie_url}
-            quality={100}
-            alt='selfie'
-            layout='fill' // required
-            objectFit='cover' // change as you like
-            className='rounded-full' // you can use other classes here too
-          />
+          {userData?.selfie_url && (
+            <Image
+              src={userData?.selfie_url}
+              quality={100}
+              alt='selfie'
+              layout='fill' // required
+              objectFit='cover' // change as you like
+              className='rounded-full' // you can use other classes here too
+              sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
+            />
+          )}
         </div>
         <ArrowRightLeft />
         <div className='relative h-48 w-48 md:h-96 md:w-96'>
-          <Image
-            src={photoUrl}
-            quality={100}
-            alt='selfie'
-            layout='fill' // required
-            objectFit='cover' // change as you like
-            className='rounded-full' // you can use other classes here too
-          />
+          {photoUrl && (
+            <Image
+              src={photoUrl}
+              quality={100}
+              alt='selfie'
+              layout='fill' // required
+              objectFit='cover' // change as you like
+              className='rounded-full' // you can use other classes here too
+              sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
+            />
+          )}
         </div>
       </div>
     </>

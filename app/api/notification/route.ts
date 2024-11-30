@@ -1,9 +1,8 @@
-// pages/api/sendNotification.ts
-import type { NextApiRequest, NextApiResponse } from 'next';
+import { NextResponse } from 'next/server';
 
 const notificationUrl = 'https://exp.host/--/api/v2/push/send';
 
-export default async function POST(req: NextApiRequest, res: NextApiResponse) {
+export async function POST(req: Request) {
   try {
     const response = await fetch(notificationUrl, {
       method: 'POST',
@@ -17,13 +16,13 @@ export default async function POST(req: NextApiRequest, res: NextApiResponse) {
 
     if (!response.ok) {
       const error = await response.json();
-      return res.status(response.status).json({ message: error });
+      return new NextResponse('Something went wrong', { status: 400 });
     }
 
     const data = await response.json();
-    res.status(200).json(data);
+    return NextResponse.json(data);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: 'Internal Server Error' });
+    return new NextResponse('Internal server error', { status: 500 });
   }
 }
