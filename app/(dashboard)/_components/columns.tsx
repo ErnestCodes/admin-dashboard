@@ -113,7 +113,8 @@ export const columns: ColumnDef<Verification>[] = [
     cell: ({ row }) => {
       const status = row.getValue('status') || ('' as any);
       const isPending = status === 'PENDING';
-      const isCompleted = status === 'COMPLETED';
+      const isAccepted = status === 'ACCEPTED';
+      const isRejected = status === 'REJECTED';
 
       return (
         <>
@@ -123,7 +124,13 @@ export const columns: ColumnDef<Verification>[] = [
             </Button>
           )}
 
-          {isCompleted && (
+          {isRejected && (
+            <Button variant={'destructive'} className='ml-4'>
+              {status}
+            </Button>
+          )}
+
+          {isAccepted && (
             <Button variant={'completed'} className='ml-4'>
               {status}
             </Button>
