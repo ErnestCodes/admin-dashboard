@@ -12,9 +12,6 @@ const HomePage = () => {
   return (
     <div className='flex flex-col w-full'>
       <Stats />
-      <div className='mt-10'>
-        <p className='font-semibold text-lg font-inter'>Verifications</p>
-      </div>
 
       {data && <DataTable columns={columns} data={data} />}
     </div>

@@ -20,8 +20,10 @@ import {
   ColumnFiltersState,
   getFilteredRowModel,
 } from '@tanstack/react-table';
+import { Input } from '@/components/ui/input';
 
 import React from 'react';
+import { Search } from 'lucide-react';
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -53,6 +55,21 @@ const DataTable = <TData, TValue>({
   });
   return (
     <>
+      <div className='mt-10 flex flex-row justify-between items-center w-full'>
+        <p className='font-semibold text-lg font-inter'>Verifications</p>
+
+        <Input
+          placeholder='Search user...'
+          value={
+            (table.getColumn('displayName')?.getFilterValue() as string) ?? ''
+          }
+          onChange={(event) =>
+            table.getColumn('displayName')?.setFilterValue(event.target.value)
+          }
+          className='w-80'
+        />
+      </div>
+
       <div className='border border-[#e5e5e5] rounded-md my-6'>
         <Table>
           <TableHeader>
