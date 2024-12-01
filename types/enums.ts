@@ -28,6 +28,7 @@ export type ProviderProps = {
   userId: string;
   fetchUsers: () => Promise<any>;
   fetchVerifications: () => Promise<any>;
+  updateUserRecord: (user_id: string) => Promise<any>;
   updateVerifications: (
     user_id: string,
     status: 'PENDING' | 'ACCEPTED' | 'REJECTED'

@@ -81,10 +81,27 @@ export const SupabaseProvider = ({ children }: any) => {
     return true;
   }
 
+  async function updateUserRecord(user_id: string) {
+    const { error } = await client
+      .from(USERS_TABLE)
+      .update({
+        profile_moderated: true,
+      })
+      .eq('id', user_id);
+
+    if (error) {
+      console.error(error.message);
+      return false;
+    }
+
+    return true;
+  }
+
   const value = {
     fetchUsers,
     fetchVerifications,
     updateVerifications,
+    updateUserRecord,
   };
 
   return (

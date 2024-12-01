@@ -17,8 +17,7 @@ type Props = {
 };
 
 const Verifications = ({ userData }: Props) => {
-  // get the photoUrl
-  const { updateVerifications } = useSupabase();
+  const { updateVerifications, updateUserRecord } = useSupabase();
   const [photoUrl, setPhotoUrl] = useState<string>('');
   const [token, setToken] = useState<string>('');
   const [isLoading, setIsLoaing] = useState<boolean>(false);
@@ -72,6 +71,8 @@ const Verifications = ({ userData }: Props) => {
           token,
           'successful'
         );
+        // update the user table
+        await updateUserRecord?.(userData?.user_id);
         toast.success('Updated');
         router.back();
       } else {
